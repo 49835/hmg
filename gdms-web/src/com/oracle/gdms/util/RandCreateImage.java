@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 //此类的方法可随机生成一个图像和验证码
 public class RandCreateImage {
 //    private static final String CODE_LIST = "AB惑CDEF祖镇G中风HIJ杨翔KLMNO荷晃PQRSTUVWX作夜YZabcdefg还hij国延klmn久opqrstu爱vwxyz1234雨星56789烈0";
-    private static final String CODE_LIST = "AAAAAAAAA";
+    private static final String CODE_LIST = "AAAAAAAAA";   
     private OutputStream response = null;
     private static final int HEIGHT = 35;//图像高
     private static final int FONT_NUM = 4;//验证字符数量
