@@ -37,14 +37,14 @@
 							style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
 							<div class="form-group">
 								<div class="field field-icon-right">
-									<input type="text" class="input input-big" name="name" id="name" value="yy"
+									<input type="text" class="input input-big" name="name" id="name" value="13396084647"
 										placeholder="登录账号" data-validate="required:请填写账号" /> <span
 										class="icon icon-phone margin-small"></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="field field-icon-right">
-									<input type="password" class="input input-big" name="password" value="222"
+									<input type="password" class="input input-big" name="password" value="1234"
 										placeholder="登录密码" data-validate="required:请填写密码" /> <span
 										class="icon icon-key margin-small"></span>
 								</div>

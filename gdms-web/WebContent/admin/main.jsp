@@ -157,7 +157,7 @@
 			<span class="icon-user"></span>商品管理
 		</h2>
 		<ul style="display: block">
-			<li><a href="info.html" ><span class="icon-caret-right"></span>上传图片</a></li>
+			<li><a href="admin/goods/list.php" ><span class="icon-caret-right"></span>商品浏览</a></li>
 			<li><a href="pass.html" ><span class="icon-caret-right"></span>修改密码</a></li>
 			<li><a href="page.html" ><span class="icon-caret-right"></span>单页管理</a></li>
 			<li><a href="adv.html" ><span class="icon-caret-right"></span>首页轮播</a></li>

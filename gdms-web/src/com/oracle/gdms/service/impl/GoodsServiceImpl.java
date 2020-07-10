@@ -44,7 +44,8 @@ public class GoodsServiceImpl extends BaseService implements GoodsService {
 //		PageModel<GoodsModel> p = ser.findByPage(1, 2);
 //		System.out.println("总页数=" + p.getTotal());
 //		for ( GoodsModel m : p.getData() ) {
-//			System.out.println("goodsid=" + m.getGoodsid() + "  name=" + m.getName());
+//			System.out.print("goodsid=" + m.getGoodsid() + "  name=" + m.getName() );
+//			System.out.println("  类别=" + m.getType().getName());
 //		}
 //	}
 

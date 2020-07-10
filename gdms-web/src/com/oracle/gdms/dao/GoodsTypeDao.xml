@@ -5,4 +5,8 @@
 	<insert id="add" parameterType="GoodsType">
 		INSERT INTO tbl_gdms_goodstype( name, description ) VALUES ( #{name}, #{description} )
 	</insert>
+	
+	<select id="findById" parameterType="int" resultType="GoodsType">
+		SELECT * FROM tbl_gdms_goodstype WHERE gtid = #{gtid}
+	</select>
 </mapper>

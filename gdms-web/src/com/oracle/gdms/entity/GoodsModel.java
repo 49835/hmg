@@ -13,7 +13,7 @@ public class GoodsModel implements Serializable {
 	private String rowflag;
 	private String name;
 	private String spec;
-	private GoodsType type;
+	private GoodsType type;		// 一方对象
 	private String unit;
 	private float amount;
 	private float price;

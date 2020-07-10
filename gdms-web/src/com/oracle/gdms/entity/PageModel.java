@@ -8,7 +8,7 @@ public class PageModel<T> {
 	private int total; // 总页数
 	private List<T> data; // 数据集
 
-	public static final int ROWS = 2;
+	public static final int ROWS = 5;
 
 	public int getCurrent() {
 		return current;
