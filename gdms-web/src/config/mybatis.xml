@@ -9,6 +9,7 @@
 		<typeAlias type="com.oracle.gdms.entity.GoodsType" alias="GoodsType"/>
 		<typeAlias type="com.oracle.gdms.entity.UserModel" alias="User"/>
 		<typeAlias type="com.oracle.gdms.entity.AreaModel" alias="Area"/>
+		<typeAlias type="com.oracle.gdms.entity.GoodsModel" alias="Goods"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -27,6 +28,7 @@
 		<mapper resource="com/oracle/gdms/dao/GoodsTypeDao.xml"/>
 		<mapper resource="com/oracle/gdms/dao/UserDao.xml"/>
 		<mapper resource="com/oracle/gdms/dao/AreaDao.xml"/>
+		<mapper resource="com/oracle/gdms/dao/GoodsDao.xml"/>
 	</mappers>
 	
 </configuration>
