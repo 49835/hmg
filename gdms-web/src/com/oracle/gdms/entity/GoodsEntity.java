@@ -8,17 +8,18 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class GoodsModel implements Serializable {
+public class GoodsEntity implements Serializable {
+
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2258086924614451635L;
+	private static final long serialVersionUID = -6627790301101286454L;
 	private Integer goodsid;
 	private String rowflag;
 	private String name;
 	private String spec;
-	private GoodsType type;		// 一方对象
+	private GoodsType type; // 一方对象
 	private String unit;
 	private float amount;
 	private float price;
@@ -28,17 +29,10 @@ public class GoodsModel implements Serializable {
 	private String size;
 	private float weight;
 	private String photo;
-	private Timestamp makedate;
-	
 	private String expirydate;
 	private short status;
 	private boolean push;
-	
-	public String getScrq() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date(makedate.getTime());
-		return sdf.format(date);
-	}
+	private String scrq;
 
 	public Integer getGoodsid() {
 		return goodsid;
@@ -152,14 +146,6 @@ public class GoodsModel implements Serializable {
 		this.photo = photo;
 	}
 
-	public Timestamp getMakedate() {
-		return makedate;
-	}
-
-	public void setMakedate(Timestamp makedate) {
-		this.makedate = makedate;
-	}
-
 	public String getExpirydate() {
 		return expirydate;
 	}
@@ -182,6 +168,14 @@ public class GoodsModel implements Serializable {
 
 	public void setPush(boolean push) {
 		this.push = push;
+	}
+
+	public String getScrq() {
+		return scrq;
+	}
+
+	public void setScrq(String scrq) {
+		this.scrq = scrq;
 	}
 
 }

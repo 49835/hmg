@@ -19,6 +19,22 @@ function qipao(msg, $obj){
 	setTimeout(function(){ d.close().remove()}, 1500);
 }
 
+function queren(msg, $tr){
+	var d = dialog({
+		title : "删除",
+		content : msg,
+		ok : function(){
+			console.log("牛批, 此处省略20行代码调用业务逻辑去删除");
+			$tr.remove();
+		},
+		cancel: function(){
+			console.log("怂拉");
+			d.close().remove();
+		}
+	});
+	d.showModal().width(400);
+}
+
 $(function(){
 
 	$(document).click(function(){
