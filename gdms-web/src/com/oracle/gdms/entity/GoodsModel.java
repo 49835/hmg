@@ -13,12 +13,13 @@ public class GoodsModel implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2258086924614451635L;
+	private static final long serialVersionUID = 3664499191768251605L;
 	private Integer goodsid;
 	private String rowflag;
 	private String name;
 	private String spec;
 	private GoodsType type;		// 一方对象
+	private int gtid;			// 为推送商口类别增加的一个ID
 	private String unit;
 	private float amount;
 	private float price;
@@ -34,6 +35,14 @@ public class GoodsModel implements Serializable {
 	private short status;
 	private boolean push;
 	
+	public int getGtid() {
+		return gtid;
+	}
+
+	public void setGtid(int gtid) {
+		this.gtid = gtid;
+	}
+
 	public String getScrq() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date(makedate.getTime());

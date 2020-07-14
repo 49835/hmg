@@ -17,4 +17,11 @@ public interface UserService {
 	int add(UserModel user);
 
 	UserModel login(UserModel user);
+
+	/**
+	 * 检查手机号码是否被占用
+	 * @param mobile
+	 * @return
+	 */
+	boolean hasMobile(String mobile);
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-<base href="http://localhost:8080/gdms-web/">
+<base href="${ href }">
 <title>登录</title>
 <link rel="stylesheet" href="css/pintuer.css">
 <link rel="stylesheet" href="css/dialog-min.css">
@@ -81,8 +81,6 @@
 			    
 			    
 			    
-			    
-			    
 				
 				<form action="admin/user/reg.php" method="post" id="regForm" style="display:none" onsubmit="return check()" >
 					<input type='hidden' id="errMsg" value="${err_msg}">
@@ -95,7 +93,7 @@
 							style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
 							<div class="form-group">
 								<div class="field field-icon-right">
-									<input type="text" class="input input-big" name="name"
+									<input type="text" class="input input-big" name="name" id="mobile" onblur="testMobile(this)"
 										placeholder="手机号码" data-validate="required:请填写手机号码" /> <span
 										class="icon icon-phone margin-small"></span>
 								</div>
@@ -182,6 +180,60 @@
 		}
 		return true;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function testMobile(txt){
+		var v = txt.value;
+		if ( v == "" ) return;
+		if ( v.length != 11 ) {
+			qipao("手机号码不合法", $("#mobile"));
+			return;
+		}
+		
+		$.ajax({
+			
+			url : "admin/user/mobile.php",	// 请求的URI
+			data: {"mobile" : v},			// 提交的参数数据
+			type: "GET",					// 请求方式 			
+          	success : function(result){	 	// 成功之后做什么
+          		var json = eval(result);	// 把结果变成JSON对象
+          		qipao(json.data.message, $("#mobile"));
+          		if ( json.data.code != 0 ){
+          			$("#mobile").css({"border":"1px solid red"});
+          		} else {
+          			$("#mobile").css({"border":"1px solid green"});
+          		}
+          	}
+			
+		});
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	function initProv(target, pid){
 		$.ajax({

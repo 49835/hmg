@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<base href="${href}">
 <title>系统信息</title>
 <link rel="stylesheet" href="css/pintuer.css">
 <style type="text/css">

@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class GoodsEntity implements Serializable {
 
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6627790301101286454L;
+	private static final long serialVersionUID = 4291184446752652899L;
 	private Integer goodsid;
 	private String rowflag;
 	private String name;
 	private String spec;
 	private GoodsType type; // 一方对象
+	private int gtid; // 为推送商口类别增加的一个ID
 	private String unit;
 	private float amount;
 	private float price;
@@ -32,7 +32,11 @@ public class GoodsEntity implements Serializable {
 	private String expirydate;
 	private short status;
 	private boolean push;
-	private String scrq;
+	private long makedate;
+	
+	public Timestamp getScrq() {
+		return new Timestamp(makedate);
+	}
 
 	public Integer getGoodsid() {
 		return goodsid;
@@ -72,6 +76,14 @@ public class GoodsEntity implements Serializable {
 
 	public void setType(GoodsType type) {
 		this.type = type;
+	}
+
+	public int getGtid() {
+		return gtid;
+	}
+
+	public void setGtid(int gtid) {
+		this.gtid = gtid;
 	}
 
 	public String getUnit() {
@@ -170,12 +182,12 @@ public class GoodsEntity implements Serializable {
 		this.push = push;
 	}
 
-	public String getScrq() {
-		return scrq;
+	public long getMakedate() {
+		return makedate;
 	}
 
-	public void setScrq(String scrq) {
-		this.scrq = scrq;
+	public void setMakedate(long makedate) {
+		this.makedate = makedate;
 	}
 
 }
