@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
@@ -37,13 +38,13 @@ public class GoodsServiceImpl extends BaseService implements GoodsService {
 			session = GDMSUtil.getSession();
 			GoodsDao dao = session.getMapper(GoodsDao.class);
 			
-			int count = dao.findCount();	// 查询总记录行数
+			int count = dao.findCount(null);	// 查询总记录行数
 			int total = count % rows == 0 ? count / rows : count / rows + 1;	// 计算总页数
 			obj.setTotal(total); // 总页数
 			
 			int offset = (pageNumber - 1) * rows;
 			
-			Map<String, Integer> map = new HashMap<>();
+			Map<String, Object> map = new HashMap<>();
 			map.put("offset", offset);
 			map.put("rows", rows);
 			obj.setData( dao.findByPage(map) );  // 数据集也查出来
@@ -119,6 +120,47 @@ public class GoodsServiceImpl extends BaseService implements GoodsService {
 			free();
 		}
 		return 0;
+	}
+
+	@Override
+	public PageModel<GoodsModel> findByKeywords(String kw, int pageNumber, int rows) {
+		PageModel<GoodsModel> obj = new PageModel<GoodsModel>();
+		obj.setCurrent(pageNumber); // 当前页
+		try {
+			session = GDMSUtil.getSession();
+			GoodsDao dao = session.getMapper(GoodsDao.class);
+			
+			int offset = (pageNumber - 1) * rows;
+			Map<String, Object> map = new HashMap<>();
+			map.put("offset", offset);
+			map.put("rows", rows);
+			map.put("kw", kw);
+			int count = dao.findCount(map);	// 查询总记录行数
+			int total = count % rows == 0 ? count / rows : count / rows + 1;	// 计算总页数
+			obj.setTotal(total); // 总页数
+			
+			obj.setData( dao.findByPage(map) );  // 数据集也查出来
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			free();
+		}
+		 
+		return obj;
+	}
+
+	@Override
+	public List<GoodsModel> findByKeywords(String kw) {
+		try {
+			session = GDMSUtil.getSession();
+			GoodsDao dao = session.getMapper(GoodsDao.class);
+			return dao.findByKeywords(kw);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			free();
+		}
+		return null;
 	}
 	
 //	public static void main(String[] args) {

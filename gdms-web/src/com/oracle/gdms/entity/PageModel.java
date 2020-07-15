@@ -48,7 +48,7 @@ public class PageModel<T> {
 			if ( i == current ) {
 				sb.append("<span class='current'>" + i + "</span>");
 			} else {
-				sb.append("<a href='admin/goods/list.php?pn="      + i +     "'>"        + i +        "</a>");
+				sb.append("<a href='javascript:changesearch("+i+")'>"        + i +        "</a>");
 			}
 		}
 		return sb.toString();

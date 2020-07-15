@@ -55,9 +55,14 @@
           </li>
         </if>
         <li>
-          <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
-          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li>
+          <input type="text" placeholder="请输入搜索关键字" value="${ keywords }" id="kw" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
+          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a>
+          <c:if test="${ keywords != null }">
+	          <button type="button" class="button border-yellow" onclick="doExport()"><span class="icon-download"></span> 导出Excel</button>
+          </c:if>
+          </li>
       </ul>
+      
     </div>
     <table class="table table-hover text-center">
       <tr>
@@ -169,8 +174,16 @@
       </tr>
     </table>
   </div>
+  
+  <input type="hidden" name="pn" value="1" id="pn">
 </form>
 <script type="text/javascript">
+
+function doExport(){
+	$("#listform").attr("action", "admin/goods/search.php");	// 为表单指定提交地址
+	$("#listform").submit();
+}
+
 
 function doPush(goodsid, a){
 	$.ajax({
@@ -189,15 +202,19 @@ function doPush(goodsid, a){
 	});
 }
 
+
 function deldata(t){
 	var $t = $(t);
 	queren("你确定要删除此记录吗？", $t.parent().parent().parent());
 }
 
-
 //搜索
-function changesearch(){	
-		
+function changesearch(i){
+	if ( i ){
+		$("#pn").val(i);  // 页码就有了
+	}
+	$("#listform").attr("action", "admin/goods/list.php");	// 为表单指定提交地址
+	$("#listform").submit();
 }
 
 //单个删除

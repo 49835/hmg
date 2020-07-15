@@ -1,5 +1,7 @@
 package com.oracle.gdms.service;
 
+import java.util.List;
+
 import com.oracle.gdms.entity.GoodsEntity;
 import com.oracle.gdms.entity.GoodsModel;
 import com.oracle.gdms.entity.PageModel;
@@ -29,4 +31,22 @@ public interface GoodsService {
 	 * @return 受影响的行数
 	 */
 	int add(GoodsEntity goods);
+
+
+	/**
+	 * 根据关键词搜索商品记录，分页显示
+	 * @param kw 关键词
+	 * @param p 页码
+	 * @param rows 每页行数
+	 * @return
+	 */
+	PageModel<GoodsModel> findByKeywords(String kw, int p, int rows);
+
+
+	/**
+	 * 查询数据进行导出成Excel下载
+	 * @param kw
+	 * @return
+	 */
+	List<GoodsModel> findByKeywords(String kw);
 }

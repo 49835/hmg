@@ -17,12 +17,52 @@
 	</resultMap>
 	
 	
-	<select id="findByPage" parameterType="java.util.Map" resultMap="GoodsEntity">
-		SELECT * FROM tbl_gdms_goods LIMIT #{offset}, #{rows}
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="findByKeywords" parameterType="java.lang.String" resultType="Goods">
+		SELECT * FROM tbl_gdms_goods WHERE 
+				name LIKE "%"#{kw}"%" OR rowflag LIKE "%"#{kw}"%" OR spec LIKE "%"#{kw}"%" OR unit LIKE "%"#{kw}"%" 
+				OR area LIKE "%"#{kw}"%"  OR size LIKE "%"#{kw}"%"    OR color LIKE "%"#{kw}"%" OR expirydate LIKE "%"#{kw}"%"
 	</select>
 	
-	<select id="findCount" resultType="int">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="findByPage" parameterType="java.util.Map" resultMap="GoodsEntity">
+		SELECT * FROM tbl_gdms_goods 
+		
+		<where>
+			<if test="kw != null and kw.length() > 0">
+				AND name LIKE "%"#{kw}"%" OR rowflag LIKE "%"#{kw}"%" OR spec LIKE "%"#{kw}"%" OR unit LIKE "%"#{kw}"%" 
+				OR area LIKE "%"#{kw}"%"  OR size LIKE "%"#{kw}"%"    OR color LIKE "%"#{kw}"%" OR expirydate LIKE "%"#{kw}"%"
+			</if>
+		</where>
+		
+		LIMIT #{offset}, #{rows}
+	</select>
+	
+	<select id="findCount" resultType="int" parameterType="java.util.Map">
 		SELECT count(*) FROM tbl_gdms_goods 
+		<where>
+			<if test="kw != null and kw.length() > 0">
+				AND name LIKE "%"#{kw}"%" OR rowflag LIKE "%"#{kw}"%" OR spec LIKE "%"#{kw}"%" OR unit LIKE "%"#{kw}"%" 
+				OR area LIKE "%"#{kw}"%"  OR size LIKE "%"#{kw}"%"    OR color LIKE "%"#{kw}"%" OR expirydate LIKE "%"#{kw}"%"
+			</if>
+		</where>
 	</select>
 	
 	<select id="findById" resultType="Goods" parameterType="int">

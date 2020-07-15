@@ -8,14 +8,16 @@ import com.oracle.gdms.entity.GoodsModel;
 
 public interface GoodsDao {
 	
-	List<GoodsModel> findByPage(Map<String, Integer> map);
+	List<GoodsModel> findByPage(Map<String, Object> map);
 
-	int findCount();
+	int findCount(Map<String, Object> map);
 
 	GoodsModel findById(int goodsid);
 
 	int add(GoodsEntity goods);
 
 	void updatePush(int goodsid);
+
+	List<GoodsModel> findByKeywords(String kw);
 	
 }
