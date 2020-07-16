@@ -19,5 +19,7 @@ public interface GoodsDao {
 	void updatePush(int goodsid);
 
 	List<GoodsModel> findByKeywords(String kw);
+
+	void updateStatus(Map<String, Object> map);
 	
 }

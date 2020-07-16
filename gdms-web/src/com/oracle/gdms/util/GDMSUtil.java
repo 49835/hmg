@@ -10,10 +10,17 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Logger;
 
 public final class GDMSUtil {
 	
 	private static SqlSessionFactory ssf;	// 定义一个全局的工厂对象
+	
+	private static Logger logger = Logger.getLogger(GDMSUtil.class);
+	
+	public static void log(String msg) {
+		logger.info(msg);
+	}
 	
 	static {   // 本类被加载的时候，这个代码块只会运行一次
 		try {

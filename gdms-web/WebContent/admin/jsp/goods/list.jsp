@@ -79,7 +79,7 @@
       
       <c:forEach items="${ model.data }" var="o" >
       	<tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
+          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="gid" value="${ o.goodsid }" />
           	${o.goodsid}
           </td>
           <td>${o.type.name}</td>
@@ -226,33 +226,15 @@ function del(id,mid,iscid){
 
 //全选
 $("#checkall").click(function(){ 
-  $("input[name='id[]']").each(function(){
-	  if (this.checked) {
-		  this.checked = false;
-	  }
-	  else {
-		  this.checked = true;
-	  }
+  $("input[name='gid']").each(function(){
+		this.checked = !this.checked;
   });
 })
 
 //批量删除
 function DelSelect(){
-	var Checkbox=false;
-	 $("input[name='id[]']").each(function(){
-	  if (this.checked==true) {		
-		Checkbox=true;	
-	  }
-	});
-	if (Checkbox){
-		var t=confirm("您确认要删除选中的内容吗？");
-		if (t==false) return false;		
-		$("#listform").submit();		
-	}
-	else{
-		alert("请选择您要删除的内容!");
-		return false;
-	}
+	$("#listform").attr("action", "admin/goods/delete.php");	// 为表单指定提交地址
+	$("#listform").submit();
 }
 
 //批量排序

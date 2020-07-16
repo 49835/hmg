@@ -15,7 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -53,7 +57,24 @@ public class GoodsSearch extends HttpServlet {
 			
 			Sheet sheet = book.createSheet();				// 在工作薄中创建一个工作表
 			
-			int[] kuan = {300, 5000, 4000, 3000, 3000, 2000, 2000, 3000, 4000, 3000, 5000, 4000, 3000, 3000, 2000, 2000};
+			CellStyle style = book.createCellStyle();   	// 创建一个样式对象
+			
+//			style.setFillForegroundColor(HSSFColor.BLUE.index);
+//			style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+			Font font = book.createFont();
+			font.setFontName("黑体");
+			font.setColor(HSSFColor.WHITE.index);
+			font.setFontHeight((short) 200);
+			style.setFont(font);
+			
+			style.setBorderBottom(CellStyle.BORDER_DOTTED); 	//底部边框
+			style.setBottomBorderColor(HSSFColor.YELLOW.index);	//底部边框颜色
+	 
+			style.setBorderLeft(CellStyle.BORDER_DOTTED); 		//左边框
+			style.setLeftBorderColor(HSSFColor.RED.index);		//左边框颜色
+
+			
+			int[] kuan = {3000, 5000, 4000, 3000, 3000, 2000, 2000, 3000, 4000, 3000, 5000, 4000, 3000, 3000, 2000, 2000};
 			for ( int a = 0; a < kuan.length; a ++ ) {
 				sheet.setColumnWidth(a, kuan[a]);			// 为每一列指定宽度
 			}
@@ -63,6 +84,7 @@ public class GoodsSearch extends HttpServlet {
 			
 			Cell cell = row.createCell(c ++);				// 创建一个单元格对象
 			cell.setCellValue("商品编号");						// 指定单元格的内容
+			cell.setCellStyle(style);
 			cell = row.createCell(c ++);
 			cell.setCellValue("商品名称");	
 			cell = row.createCell(c ++);

@@ -1,8 +1,6 @@
 package com.oracle.gdms.web.action;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.oracle.gdms.entity.UserModel;
 import com.oracle.gdms.service.UserService;
-import com.oracle.gdms.service.impl.AreaServiceImpl;
 import com.oracle.gdms.service.impl.UserServiceImpl;
 import com.oracle.gdms.util.GDMSUtil;
 

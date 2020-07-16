@@ -49,4 +49,11 @@ public interface GoodsService {
 	 * @return
 	 */
 	List<GoodsModel> findByKeywords(String kw);
+
+	
+	/**
+	 * 删除一组商品数据（更新状态）
+	 * @param gid
+	 */
+	void delete(String[] gid);
 }

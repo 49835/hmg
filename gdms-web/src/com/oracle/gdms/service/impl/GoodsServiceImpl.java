@@ -1,9 +1,6 @@
 package com.oracle.gdms.service.impl;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +28,7 @@ public class GoodsServiceImpl extends BaseService implements GoodsService {
 
 	@Override
 	public PageModel<GoodsModel> findByPage(int pageNumber, int rows) {
+		GDMSUtil.log("商品分页查询显示调用开始……");
 		PageModel<GoodsModel> obj = new PageModel<GoodsModel>();
 		obj.setCurrent(pageNumber); // 当前页
 		
@@ -48,8 +46,10 @@ public class GoodsServiceImpl extends BaseService implements GoodsService {
 			map.put("offset", offset);
 			map.put("rows", rows);
 			obj.setData( dao.findByPage(map) );  // 数据集也查出来
+			GDMSUtil.log("商品分页查询显示调用结束");
 		} catch (Exception e) {
 			e.printStackTrace();
+			GDMSUtil.log("商品分页查询显示调用时发生异常：" + e.toString());
 		} finally {
 			free();
 		}
@@ -161,6 +161,24 @@ public class GoodsServiceImpl extends BaseService implements GoodsService {
 			free();
 		}
 		return null;
+	}
+
+	@Override
+	public void delete(String[] gid) {
+		try {
+			session = GDMSUtil.getSession();
+			GoodsDao dao = session.getMapper(GoodsDao.class);
+			
+			Map<String, Object> m = new HashMap<>();
+			m.put("gid", gid);
+			dao.updateStatus(m);
+			
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			free();
+		}
 	}
 	
 //	public static void main(String[] args) {
